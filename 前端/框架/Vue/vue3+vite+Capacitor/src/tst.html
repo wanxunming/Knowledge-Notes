@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+</head>
+
+<body>
+    <div class='triangle'></div>
+
+    <script>
+        const _getExFilename = (number) => {
+            // 补全代码
+            var a = number >= 0 ? '' : '-';
+            number = Math.abs(number);
+            var n = number.toString();
+            n = n.split('').reverse();
+            for (var i = 3; i < n.length; i = i + 4) {
+                n.splice(i, 0, ',');
+            }
+            return a + n.reverse().join('');
+        }
+
+
+        let str = "A Famous Saying: Much Ado About Nothing (2012/8).";
+        let arr = str.split("");
+        for (let i = 0; i < arr.length - 1; i++) {
+            if (/[a-zA-Z]/.test(arr[i])) {
+                let temp = arr[i];
+                for (let j = i + 1; j < arr.length; j++) {
+                    if (/[a-zA-Z]/.test(arr[j])) {
+                        let trim = funcA(arr[i], arr[j]);
+                        if (trim > 0) {
+                            arr[i] = arr[j];
+                            arr[j] = temp;
+                            temp = arr[i];
+                        }
+                    }
+                }
+            }
+        }
+        function funcA(a, b) {
+            return a.toLowerCase().localeCompare(b.toLowerCase());
+        }
+        console.log(arr.join(""));
+
+
+    </script>
+</body>
+
+</html>
