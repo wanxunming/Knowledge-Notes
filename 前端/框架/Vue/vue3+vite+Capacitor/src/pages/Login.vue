@@ -42,8 +42,12 @@
 <script setup>
 import { reactive, ref } from "@vue/reactivity";
 // import RequestService from '../serves/RequestService';
-import { apiService } from '../serves/ApiService';
+// import { apiService } from '../serves/ApiService';
+import { getCurrentInstance } from 'vue'
+import { useRouter } from 'vue-router';
 
+const { appContext } = getCurrentInstance();
+const router = useRouter();
 const userInfo = reactive({
     isLogin: true, // 是否是登录状态
     username: '',
@@ -59,8 +63,12 @@ const toggleAuth = ()=> {
 // 登录
 const login = async () => {
     // TODO: 发送登录请求
-    const data = await apiService.post('/api/login',{name:userInfo.username,password:userInfo.password});
-    console.log(data.message);
+    const data = await appContext.config.globalProperties.$request.post('/api/login',{"user_name":userInfo.username,"user_pwd":userInfo.password});
+    if(data=="Login success"){
+      router.push({path:'/tablan'})
+    }else{
+
+    }
 };
 // 注册
 const register = ()=> {

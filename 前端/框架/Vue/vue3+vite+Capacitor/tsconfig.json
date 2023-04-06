@@ -1,0 +1,14 @@
+{
+    "compilerOptions": {
+      "target": "es2017",
+      "lib": ["esnext", "dom"],
+      "module": "esnext",
+      "moduleResolution": "node",
+      "jsx": "preserve",
+      "sourceMap": true,
+      "allowSyntheticDefaultImports": true,
+      "esModuleInterop": true,
+      "resolveJsonModule": true
+    }
+  }
+  
